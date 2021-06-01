@@ -23,8 +23,7 @@ public abstract class Graph {
 		System.arraycopy(vertices, 0, this.vertices, 
 						0, vertices.length);
 		
-		numberOfVertices = vertices.length;
-		
+		numberOfVertices = firstEmptyPos = vertices.length;
 		for(int i=0; i<numberOfVertices; i++) {
 			//convert int[] to Integer[] then to List
 			this.adj[i] = (ArrayList<Integer>) IntStream.
@@ -47,8 +46,10 @@ public abstract class Graph {
 	}
 	
 	private int getNextEmptyPos(int current) {
-		while(! getVertex(current).equals(EMPTY_VERTEX)) {
-			current++;
+		for(; current < numberOfVertices; current++) {
+			if(getVertex(current).equals(EMPTY_VERTEX)) {
+				return current;
+			}
 		}
 		return current;
 	}
@@ -65,8 +66,6 @@ public abstract class Graph {
 			if(firstEmptyPos < MAX_NUM_OF_VERTICES) {
 				vertices[firstEmptyPos++] = v;
 				firstEmptyPos = getNextEmptyPos(firstEmptyPos);
-			} else {
-				vertices[numberOfVertices++] = v;
 			}
 			
 			numberOfVertices++;
