@@ -16,6 +16,7 @@ public class UndirectedGraph extends Graph {
         int vIndex = super.getIndex(v);
         int neighborIndex= super.getIndex(neighbor);
 
+        if((vIndex != -1) && (neighborIndex != -1))
         addNeighbor(vIndex, neighborIndex);
         //super.getadj()[vIndex].add(neighborIndex);
         //super.getadj()[neighborIndex].add(vIndex);
@@ -36,6 +37,7 @@ public class UndirectedGraph extends Graph {
         int vIndex = super.getIndex(v);
         int neighborIndex= super.getIndex(neighbor);
 
+        if((vIndex != -1) && (neighborIndex != -1))
         removeNeighbor(vIndex,neighborIndex);
         //super.getadj()[vIndex].remove(neighborIndex);
         //super.getadj()[neighborIndex].remove(vIndex);
