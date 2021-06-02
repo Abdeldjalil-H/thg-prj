@@ -18,15 +18,12 @@ public class UndirectedGraph extends Graph {
 
         if((vIndex != -1) && (neighborIndex != -1))
         addNeighbor(vIndex, neighborIndex);
-        //super.getadj()[vIndex].add(neighborIndex);
-        //super.getadj()[neighborIndex].add(vIndex);
     }
 
 
 
     @Override
     public void removeNeighbor(int vIndex, int neighborIndex){
-
         super.getadj()[vIndex].remove(neighborIndex);
         super.getadj()[neighborIndex].remove(vIndex);
 
@@ -39,8 +36,6 @@ public class UndirectedGraph extends Graph {
 
         if((vIndex != -1) && (neighborIndex != -1))
         removeNeighbor(vIndex,neighborIndex);
-        //super.getadj()[vIndex].remove(neighborIndex);
-        //super.getadj()[neighborIndex].remove(vIndex);
     }
 
 }
