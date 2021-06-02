@@ -17,7 +17,7 @@ public abstract class Graph {
 	{
 		vertices = new String[MAX_NUM_OF_VERTICES];
 		//@SuppressWarnings("unchecked")
-		adj = (ArrayList<Integer>[]) new ArrayList[MAX_NUM_OF_VERTICES];
+		setAdj((ArrayList<Integer>[]) new ArrayList[MAX_NUM_OF_VERTICES]);
 	}
 	public Graph(String[] vertices, int[][] adj) {
 		System.arraycopy(vertices, 0, this.vertices, 
@@ -26,7 +26,7 @@ public abstract class Graph {
 		numberOfVertices = firstEmptyPos = vertices.length;
 		for(int i=0; i<numberOfVertices; i++) {
 			//convert int[] to Integer[] then to List
-			this.adj[i] = (ArrayList<Integer>) IntStream.
+			this.getAdj()[i] = (ArrayList<Integer>) IntStream.
 					of(adj[i]).boxed().
 					collect(Collectors.toList());
 		}
@@ -93,7 +93,7 @@ public abstract class Graph {
 		if(vIndex < firstEmptyPos) {
 			firstEmptyPos = vIndex;
 		}
-		for(int neighbor: adj[vIndex]) {
+		for(int neighbor: getAdj()[vIndex]) {
 			removeNeighbor(vIndex, neighbor);
 		}
 	}
@@ -107,7 +107,7 @@ public abstract class Graph {
 	
 	public boolean areNeighbors(String v1, String v2) {
 		int v2Index = getIndex(v2);
-		for(int neighbor: adj[getIndex(v1)]) {
+		for(int neighbor: getAdj()[getIndex(v1)]) {
 			if(v2Index == neighbor) {
 				return true;
 			}
@@ -118,10 +118,14 @@ public abstract class Graph {
 	public int[] getNeighbors(String v) {
 		int index = getIndex(v);
 		if(index != -1) {
-			return adj[index].stream().mapToInt(i->i).toArray();
+			return getAdj()[index].stream().mapToInt(i->i).toArray();
 		} else {
 			return new int[0];
 		}
+	}
+
+	public ArrayList<Integer>[] getAdj() {
+		return adj;
 	}
 	
 }
