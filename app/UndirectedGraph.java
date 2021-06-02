@@ -5,10 +5,10 @@ public class UndirectedGraph extends Graph {
     public void addNeighbor(int vIndex, int neighborIndex) {
 
         // v1 neighbor of v2
-        super.getadj()[vIndex].add(neighborIndex);
+        super.getAdj()[vIndex].add(neighborIndex);
 
         //v2 neighbhor of v1 (because non-orienté)
-        super.getadj()[neighborIndex].add(vIndex);
+        super.getAdj()[neighborIndex].add(vIndex);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class UndirectedGraph extends Graph {
 
     @Override
     public void removeNeighbor(int vIndex, int neighborIndex){
-        super.getadj()[vIndex].remove(neighborIndex);
-        super.getadj()[neighborIndex].remove(vIndex);
+        super.getAdj()[vIndex].remove(neighborIndex);
+        super.getAdj()[neighborIndex].remove(vIndex);
 
     }
 
