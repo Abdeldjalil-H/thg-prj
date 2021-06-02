@@ -21,19 +21,7 @@ public class UndirectedGraph extends Graph{
 	}
 
 	@Override
-	public void addEdge(String v1, String v2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeEdge(int v1Index, int v2Index) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeEdge(String v1, String v2) {
+	public void removeNeighbor(int vIndex, int neighborIndex) {
 		// TODO Auto-generated method stub
 		
 	}
