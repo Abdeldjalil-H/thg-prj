@@ -94,7 +94,7 @@ public abstract class Graph {
 			firstEmptyPos = vIndex;
 		}
 		for(int neighbor: adj[vIndex]) {
-			removeEdge(vIndex, neighbor);
+			removeNeighbor(vIndex, neighbor);
 		}
 	}
 	
@@ -102,13 +102,8 @@ public abstract class Graph {
 	abstract public void addNeighbor(int vIndex, int neighborIndex);
 	abstract public void addNeighbor(String v, String neighbor);
 	
+	abstract public void removeNeighbor(int vIndex, int neighborIndex);
 	abstract public void removeNeighbor(String v, String neighbor);
-	
-	
-	abstract public void addEdge(String v1, String v2);
-	
-	abstract public void removeEdge(int v1Index, int v2Index);
-	abstract public void removeEdge(String v1, String v2);
 	
 	public boolean areNeighbors(String v1, String v2) {
 		int v2Index = getIndex(v2);
