@@ -1,29 +1,27 @@
 package app;
+import java.util.ArrayList;
 
-public class DirectedGraph extends Graph{
-
+public abstract class DirectedGraph extends Graph {
+	private ArrayList<Integer>[] ade = super.getAdj();
+	
 	@Override
 	public void addNeighbor(int vIndex, int neighborIndex) {
-		// TODO Auto-generated method stub
-		
+	
+	    ade[vIndex].add(neighborIndex)  ;
+	
 	}
-
+	
 	@Override
-	public void addNeighbor(String v, String neighbor) {
-		// TODO Auto-generated method stub
-		
+	public void addNeighbor(String v, String neighbor){
+		int vIndex = getIndex(v);
+		int IndexNeigh = getIndex(neighbor);
+		addNeighbor(vIndex,IndexNeigh);
 	}
-
+	
 	@Override
-	public void removeNeighbor(String v, String neighbor) {
-		// TODO Auto-generated method stub
-		
+	public void removeNeighbor(String v, String neighbor){
+		int vIndex=super.getIndex(v) ;
+		int IndexNeigh=super.getIndex(neighbor);
+		ade[vIndex].remove(neighbor);
 	}
-
-	@Override
-	public void removeNeighbor(int vIndex, int neighborIndex) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
