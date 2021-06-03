@@ -17,7 +17,7 @@ public abstract class Graph {
 	{
 		vertices = new String[MAX_NUM_OF_VERTICES];
 		//@SuppressWarnings("unchecked")
-		setAdj((ArrayList<Integer>[]) new ArrayList[MAX_NUM_OF_VERTICES]);
+		adj = (ArrayList<Integer>[]) new ArrayList[MAX_NUM_OF_VERTICES];
 	}
 	public Graph(String[] vertices, int[][] adj) {
 		System.arraycopy(vertices, 0, this.vertices, 
