@@ -1,13 +1,11 @@
 package app;
-import java.util.ArrayList;
 
 public abstract class DirectedGraph extends Graph {
-	private ArrayList<Integer>[] ade = super.getAdj();
 	
 	@Override
 	public void addNeighbor(int vIndex, int neighborIndex) {
 	
-	    ade[vIndex].add(neighborIndex)  ;
+	    getAdj()[vIndex].add(neighborIndex)  ;
 	
 	}
 	
@@ -21,7 +19,7 @@ public abstract class DirectedGraph extends Graph {
 	@Override
 	public void removeNeighbor(String v, String neighbor){
 		int vIndex=super.getIndex(v) ;
-		int IndexNeigh=super.getIndex(neighbor);
-		ade[vIndex].remove(neighbor);
+		//int IndexNeigh = super.getIndex(neighbor);
+		getAdj()[vIndex].remove(neighbor);
 	}
 }
