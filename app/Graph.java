@@ -4,22 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import gui.Vertex;
 
 
 public abstract class Graph {
 	private final int MAX_NUM_OF_VERTICES = 100;
-	private final String EMPTY_VERTEX = "";
+	private static final Vertex EMPTY_VERTEX = new Vertex();
 	private int firstEmptyPos;
 	private int numberOfVertices;
-	private String[] vertices;
+	private Vertex[] vertices;
 	private ArrayList<Integer>[] adj;
 	
 	{
-		vertices = new String[MAX_NUM_OF_VERTICES];
+		vertices = new Vertex[MAX_NUM_OF_VERTICES];
 		//@SuppressWarnings("unchecked")
 		adj = (ArrayList<Integer>[]) new ArrayList[MAX_NUM_OF_VERTICES];
 	}
-	public Graph(String[] vertices, int[][] adj) {
+	public Graph(Vertex[] vertices, int[][] adj) {
 		System.arraycopy(vertices, 0, this.vertices, 
 						0, vertices.length);
 		
@@ -36,7 +37,7 @@ public abstract class Graph {
 		
 	}
 	
-	public int getIndex(String v) {
+	public int getIndex(Vertex v) {
 		for(int i=0; i < vertices.length; i++) {
 			if(v.equals(vertices[i])) {
 				return i;
@@ -53,7 +54,7 @@ public abstract class Graph {
 		}
 		return current;
 	}
-	public String getVertex(int id) {
+	public Vertex getVertex(int id) {
 		if(id >= 0 && id < numberOfVertices) {
 			return vertices[id];
 		}
@@ -61,7 +62,7 @@ public abstract class Graph {
 	}
 	
 	//add a vertex and return true if added correctely
-	public boolean addVertex(String v) {
+	public boolean addVertex(Vertex v) {
 		if(numberOfVertices < MAX_NUM_OF_VERTICES) {
 			if(firstEmptyPos < MAX_NUM_OF_VERTICES) {
 				vertices[firstEmptyPos++] = v;
@@ -74,7 +75,7 @@ public abstract class Graph {
 		return false;
 	}
 	
-	public boolean addVertex(String v, int[] neighbors) {
+	public boolean addVertex(Vertex v, int[] neighbors) {
 		if(addVertex(v)) {
 			int vIndex = getIndex(v);
 			for(int neighbor: neighbors) {
@@ -86,7 +87,7 @@ public abstract class Graph {
 		return false;
 	}
 	
-	public void removeVertex(String v) {
+	public void removeVertex(Vertex v) {
 		int vIndex = getIndex(v);
 		vertices[vIndex] = EMPTY_VERTEX;
 		numberOfVertices--;
@@ -100,12 +101,12 @@ public abstract class Graph {
 	
 	//add an existing neighbor to vertex v
 	abstract public void addNeighbor(int vIndex, int neighborIndex);
-	abstract public void addNeighbor(String v, String neighbor);
+	abstract public void addNeighbor(Vertex v, Vertex neighbor);
 	
 	abstract public void removeNeighbor(int vIndex, int neighborIndex);
-	abstract public void removeNeighbor(String v, String neighbor);
+	abstract public void removeNeighbor(Vertex v, Vertex neighbor);
 	
-	public boolean areNeighbors(String v1, String v2) {
+	public boolean areNeighbors(Vertex v1, Vertex v2) {
 		int v2Index = getIndex(v2);
 		for(int neighbor: getAdj()[getIndex(v1)]) {
 			if(v2Index == neighbor) {
@@ -115,7 +116,7 @@ public abstract class Graph {
 		return false;
 	}
 	
-	public int[] getNeighbors(String v) {
+	public int[] getNeighbors(Vertex v) {
 		int index = getIndex(v);
 		if(index != -1) {
 			return getAdj()[index].stream().mapToInt(i->i).toArray();

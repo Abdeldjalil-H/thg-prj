@@ -1,5 +1,6 @@
 package app;
 
+import gui.Vertex;
 public class UndirectedGraph extends Graph {
     @Override
     public void addNeighbor(int vIndex, int neighborIndex) {
@@ -12,7 +13,7 @@ public class UndirectedGraph extends Graph {
     }
 
     @Override
-    public void addNeighbor(String v, String neighbor) {
+    public void addNeighbor(Vertex v, Vertex neighbor) {
         int vIndex = super.getIndex(v);
         int neighborIndex= super.getIndex(neighbor);
 
@@ -30,7 +31,7 @@ public class UndirectedGraph extends Graph {
     }
 
     @Override
-    public void removeNeighbor(String v, String neighbor) {
+    public void removeNeighbor(Vertex v, Vertex neighbor) {
         int vIndex = super.getIndex(v);
         int neighborIndex= super.getIndex(neighbor);
 
