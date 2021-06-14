@@ -25,6 +25,7 @@ public class DrawVertex implements EventHandler<MouseEvent>{
 				);
 		
 		((AnchorPane) event.getSource()).getChildren().add(v);
+		
 	}
 
 }

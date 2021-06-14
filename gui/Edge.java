@@ -6,7 +6,8 @@ public class Edge extends Line{
 	private Vertex firstVertex; 
 	private Vertex secondVertex;
 	
-	
+	public Edge() {
+	}
 	public Edge(Vertex firstVertex, Vertex secondVertex) {
 		super(
 			firstVertex.getCenterX(),
@@ -14,7 +15,7 @@ public class Edge extends Line{
 			secondVertex.getCenterX(),
 			secondVertex.getCenterY()
 		);
-		
+		this.setViewOrder(2);
 		this.firstVertex = firstVertex;
 		this.secondVertex = secondVertex;
 	}

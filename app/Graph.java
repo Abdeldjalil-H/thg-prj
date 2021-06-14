@@ -63,12 +63,10 @@ public abstract class Graph {
 	
 	//add a vertex and return true if added correctely
 	public boolean addVertex(Vertex v) {
-		if(numberOfVertices < MAX_NUM_OF_VERTICES) {
-			if(firstEmptyPos < MAX_NUM_OF_VERTICES) {
-				vertices[firstEmptyPos++] = v;
-				firstEmptyPos = getNextEmptyPos(firstEmptyPos);
-			}
-			
+		if(firstEmptyPos < MAX_NUM_OF_VERTICES) {
+			vertices[firstEmptyPos] = v;
+			adj[firstEmptyPos] = new ArrayList<>();
+			firstEmptyPos = getNextEmptyPos(firstEmptyPos);
 			numberOfVertices++;
 			return true;
 		}
@@ -129,4 +127,17 @@ public abstract class Graph {
 		return adj;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return  "vertices" + Arrays.toString(vertices) + " adj: " +
+		Arrays.toString(adj) ;
+	}
+	
+	public void showAdjList() {
+		for(int i=0; i<numberOfVertices; i++) {
+			System.out.print(i + ": ");
+			System.out.println(adj[i].toString());
+		}
+	}
 }

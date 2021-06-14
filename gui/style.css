@@ -1,0 +1,11 @@
+.vertex {
+	/*-fx-background-color: #04AA6D; /* Green */
+	-fx-background-color: #ffffff;
+	-fx-color: #eeeeee;
+	-fx-padding: 20px;
+	-fx-font-size: 16px;
+	-fx-cursor: pointer;
+	-fx-background-radius: 100%;
+	-fx-border-color: #000000;
+	-fx-border-radius: 100%;
+}
